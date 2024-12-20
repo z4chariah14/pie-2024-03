@@ -205,7 +205,6 @@
 
 <section id="electrical-software">
     <h2>Evolution of the Code and Circuit Design</h2>
-
     
     <h3>Code Evolution</h3>
     <ol>
@@ -231,21 +230,29 @@
                 <li>Calculated the current heading (based on previous and current coordinates) and compared it to the target heading (current to destination coordinates).</li>
                 <li>If the heading deviated beyond 45 degrees, the boat corrected its course.</li>
                 <li>Added logic to switch direction based on proximity to the target.</li>
+                <li>Removed waypoints logic since heading logic was precise enough</li>
             </ul>
         </li>
     </ol>
 
     <h3>Final Code Design Elements</h3>
+    <br />
+    <p><strong>Code Repository:</strong> <a href="https://github.com/bellesea/boat/blob/main/sketch.ino">GitHub Link</a></p>
+    <br />
     <ul>
-        <li>Initial delay to allow user to place the boat in water.</li>
-        <li>Saves the start coordinates and calculates waypoints.</li>
-        <li>Runs a navigation cycle every 4 seconds:
+        <li>Initial delay of 2 min to allow user to row into the water and place the boat.</li>
+        <li>Saves the starting coordinates when it is placed in the water.</li>
+        <li>Runs a navigation cycle every 5 seconds:
             <ol>
-                <li>Adjusts heading if it deviates beyond 45 degrees.</li>
-                <li>Stops adjusting when close to the target coordinate.</li>
+                <li>Calculates whether the current boat is further away from the destination by longitude or latitude.</li>
+                <li>Taking the coordinate that is the result from above, checks if it is moving closer or further away along this coordinate.</li>
+                <li>If it's moving further away, turn 90 degrees left/right depending on it's relative location.</li>
+                <li>Adjusts heading by turning left/right if it deviates beyond 30 degrees of the target heading.</li>
+                <li>Checks distance to destination (in meters) </li>
             </ol>
         </li>
-        <li>Switches waypoints within 10 meters and stops motors at the final destination for 30 seconds before returning to the start point.</li>
+        <li>Within 15 meters of the final destination, turn in a circle for 20 seconds and update the destination coordinates to return to the start point.</li>
+        <li>Stops when it reaches it's starting destination.</li>
     </ul>
 
     <h3>Troubleshooting Errors</h3>
@@ -265,6 +272,10 @@
         <li>
             <strong>Drift:</strong>
             <ul><li>Used heading calculations between current and previous positions to detect drift and correct the course.</li></ul>
+        </li>
+        <li>
+          <strong>Motors not responsive:</strong>
+          <ul><li>Set motor speed to zero at the start of the set-up code before giving the motors its actual speed.</li></ul>
         </li>
     </ol>
 
@@ -289,7 +300,7 @@
         <li><strong>Connections:</strong>
             <ul>
                 <li><strong>ESCs:</strong> Connected to <strong>Digital Pins 9 and 10</strong> for PWM motor control.</li>
-                <li><strong>GPS Module:</strong> RXD connected to <strong>Analog Pin 3</strong>, TXD to <strong>Analog Pin 4</strong>.</li>
+                <li><strong>GPS Module:</strong> RXD connected to <strong>Digital Pin 3</strong>, TXD to <strong>Digital Pin 4</strong>.</li>
             </ul>
         </li>
     </ul>
