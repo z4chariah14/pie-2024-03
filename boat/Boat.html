@@ -10,16 +10,20 @@
 </head>
 <body>
 
-<header>
+  <header>
     <h1>Principles of Integrated Engineering (PIE) Fall 2024 Project</h1>
     <nav>
-        <ul>
-            <li><a href="#electrical-software">Electrical and Software</a></li>
-            <li><a href="#mechanical">Mechanical</a></li>
-            <li><a href="#prototype">Prototype</a></li>
-        </ul>
+      <ul>
+        <li><a href="#homepage">Homepage</a></li>
+        <li><a href="#budget-breakdown">Budget Breakdown</a></li>
+        <li><a href="#data-energy-flow">Data and Energy Flow</a></li>
+        <li><a href="#electrical-software">Electrical and Software</a></li>
+        <li><a href="#mechanical">Mechanical</a></li>
+        <li><a href="#prototype">Prototype</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
+  
 
 <section id="homepage">
     <h2>Homepage (High-Level Overview)</h2>
@@ -41,12 +45,24 @@
         <img src="Images/Boat.jpg" alt="Final Product Image">
         <img src="Images/Boat_whole.png" alt="CAD of Final Boat">
     </div>
-    <a class="video-link" href="path/to/video.mp4">Watch the final product in action</a>
+    <h3>Final Product Showcase</h3>
+    <div class="video-container">
+      <iframe 
+        width="640" 
+        height="360" 
+        src="https://www.youtube.com/embed/WoMyw6ldScI" 
+        title="Final Product Video"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
 </section>
 
 <hr>
 
-<section>
+<section id="budget-breakdown">
     <h2>Budget Breakdown</h2>
 
     <h3>Overview</h3>
@@ -168,18 +184,22 @@
 
 <hr>
 
-<section>
-    <h2>Data and Energy Flow</h2>
+<section id="data-energy-flow">
+  <h2>Data and Energy Flow</h2>
 
-    <h3>Data Flow Diagram</h3>
-    <img src="path/to/data_flow_diagram.jpg" alt="Data Flow Diagram">
+  <h3>Data and Energy Flow Diagram</h3>
+  <img src="Images\Data_energy_flow_diagram.png" alt="Data and Energy Flow Diagram">
 
-    <h3>Energy Flow Diagram</h3>
-    <img src="path/to/energy_flow_diagram.jpg" alt="Energy Flow Diagram">
-
-    <h3>Explanation</h3>
-    <p>The boat relies on GPS data for navigation and sends motor control signals via PWM to the ESCs. Data from the GPS is processed to calculate current and target headings.</p>
+  <h3>Explanation</h3>
+  <p>
+      This diagram illustrates the interaction between the data and energy systems in the boat. 
+      User inputs waypoints, which are processed by the Arduino Uno, acting as the central controller.
+      The GPS module provides real-time location data to the Arduino Uno, which calculates the current and target headings.
+      Based on this information, the Arduino sends motor speed and direction signals (via PWM) to the ESCs controlling the brushless motors. 
+      The energy flow highlights the power distribution from the batteries to the individual components, ensuring consistent operation.
+  </p>
 </section>
+
 
 <hr>
 
@@ -343,6 +363,8 @@
       </ul>
       <div class="image-container">
         <img src="Images/Platform_1.png" alt="Electrical Housing Platform">
+        <img src="Images\Platform.jpg" alt="Electrical Housing Platform">
+        <img src="Images\Platform_with_elec.jpg" alt="Electrical Housing Platform">
       </div>
     </article>
   
@@ -371,6 +393,7 @@
       <div class="image-container">
         <img src="Images/ESC_cooler1.png" alt="ESC Cooler 1">
         <img src="Images/ESC_cooler2.png" alt="ESC Cooler 2">
+        <img src="Images\ESC_cooler.jpg"  alt="ESC Cooler">
       </div>
     </article>
   
